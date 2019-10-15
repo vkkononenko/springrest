@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2019-10-15-2" author="vkkononenko" context="migrateData">
+        <comment>
+            Создание тестовых персональных данных
+        </comment>
+        <sql>
+            insert into person values(1, '2019-10-08 12:57:59.449000', null, 'Vitaliy', 'Kononenko', '+79265590804');
+            insert into person values(2, '2019-10-08 12:58:59.449000', null, 'Anastasiya', 'Savchenko', '+79168653022');
+            insert into person values(3, '2019-10-08 12:59:59.449000', null, 'Akakiy', 'Akachenko', '88005553535');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
