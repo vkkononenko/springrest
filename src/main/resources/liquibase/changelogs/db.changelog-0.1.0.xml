@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2019-10-08-1" author="vkkononenko" context="schemaData">
+        <comment>
+            Создание таблицы пользователей
+        </comment>
+        <sql>
+            create table if not exists system_user
+            (
+            id           bigserial not null
+            constraint system_user_pkey
+            primary key,
+            date_created timestamp,
+            date_updated timestamp,
+            account_num  varchar(255),
+            login        varchar(255)
+            );
+
+            alter table system_user
+            owner to postgres;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
