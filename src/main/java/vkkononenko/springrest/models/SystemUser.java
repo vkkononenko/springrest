@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import vkkononenko.springrest.models.base.EntityBase;
 
 import java.util.List;
@@ -12,12 +13,16 @@ import java.util.List;
 @Table(name = "SystemUser")
 public class SystemUser extends EntityBase {
 
+    @JsonIgnore
     private String login;
 
     private String accountNum;
 
     @OneToMany
     private List<Person> personList;
+
+    @OneToMany
+    private List<Repository> repositoryList;
 
     public SystemUser() {
     }
@@ -44,5 +49,13 @@ public class SystemUser extends EntityBase {
 
     public void setPersonList(List<Person> personList) {
         this.personList = personList;
+    }
+
+    public List<Repository> getRepositoryList() {
+        return repositoryList;
+    }
+
+    public void setRepositoryList(List<Repository> repositoryList) {
+        this.repositoryList = repositoryList;
     }
 }

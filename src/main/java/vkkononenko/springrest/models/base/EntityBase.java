@@ -1,5 +1,7 @@
 package vkkononenko.springrest.models.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,13 +10,16 @@ public class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     protected Long id;
 
     @Column(updatable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
+    @JsonIgnore
     protected Date dateCreated;
 
     @Temporal(value = TemporalType.TIMESTAMP)
+    @JsonIgnore
     protected Date dateUpdated;
 
     @PrePersist

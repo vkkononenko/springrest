@@ -6,25 +6,35 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="2019-10-15-3" author="vkkononenko" context="schemaData">
+    <changeSet id="2020-01-23-7" author="vkkononenko" context="schemaData">
         <comment>
-            Создание таблицы связи между пользователями и персональными данными
+            Ввод функционала репозиториев
         </comment>
         <sql>
-            create table if not exists system_user_person_list
+            create table if not exists repository
             (
-            system_user_id bigint not null
-            constraint fk2dsw71hiysgwd3d76aekte0ut
-            references system_user,
-            person_list_id bigint not null
-            constraint uk_dy59ws4qqyvcp2uuwtl4ra5ft
-            unique
-            constraint fkbnx0sabeiekyuc1p3wqcolulq
-            references person
+                id  bigserial not null,
+                date_created timestamp,
+                date_updated timestamp,
+                content bytea,
+                type varchar(255),
+                uploaded_by_id int8,
+                primary key (id)
             );
 
-            alter table system_user_person_list
+            alter table repository
             owner to postgres;
+
+            create table if not exists system_user_repository_list
+            (
+                system_user_id int8 not null,
+                repository_list_id int8 not null
+            );
+
+            alter table system_user_repository_list
+            owner to postgres;
+
+            alter table system_user_repository_list drop constraint if exists UK_8avxu7v61j9ehhmaa12afwt6h;
         </sql>
     </changeSet>
 

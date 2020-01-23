@@ -8,7 +8,7 @@
 
     <changeSet id="2019-10-08-1" author="vkkononenko" context="schemaData">
         <comment>
-            Создание таблицы пользователей
+            Ввод фунционала пользователей
         </comment>
         <sql>
             create table if not exists system_user

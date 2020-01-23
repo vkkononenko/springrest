@@ -6,9 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="2019-10-15-1" author="vkkononenko" context="schemaData">
+    <changeSet id="2019-10-15-3" author="vkkononenko" context="schemaData">
         <comment>
-            Создание таблицы персональных данных
+            Ввод функционала персональных данных
         </comment>
         <sql>
             create table if not exists person
@@ -22,6 +22,21 @@
             last_name    varchar(255),
             phone_num    varchar(255)
             );
+
+            create table if not exists system_user_person_list
+            (
+            system_user_id bigint not null
+            constraint fk2dsw71hiysgwd3d76aekte0ut
+            references system_user,
+            person_list_id bigint not null
+            constraint uk_dy59ws4qqyvcp2uuwtl4ra5ft
+            unique
+            constraint fkbnx0sabeiekyuc1p3wqcolulq
+            references person
+            );
+
+            alter table system_user_person_list
+            owner to postgres;
 
             alter table person
             owner to postgres;

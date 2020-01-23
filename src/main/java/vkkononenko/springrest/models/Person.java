@@ -3,7 +3,6 @@ package vkkononenko.springrest.models;
 import vkkononenko.springrest.models.base.EntityBase;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 public class Person extends EntityBase {
